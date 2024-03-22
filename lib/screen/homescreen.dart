@@ -8,11 +8,17 @@ class homeScreen extends StatefulWidget {
 }
 
 class _AppState extends State<homeScreen> {
+  List<String> _todoList = []; // 할 일 리스트
+  bool _showTodoList = false; // 할 일 목록을 보여줄 지 여부
+  bool _showWeeklyTodoList = false; // 일주일 간 해야할 일 목록을 보여줄지 여부
+  bool _showMonthlyTodoList = false; // 이번 달의 할 일 목록을 보여줄지 여부
+  bool _showCurrentTodoList = false; // 지금 할 일 목록을 보여줄지 여부
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
-            backgroundColor: Colors.amberAccent,
+            backgroundColor: Color(0xFFFFDEAD),
             body: Padding(
               padding: EdgeInsets.all(20.0),
               child: Column(
@@ -66,8 +72,13 @@ class _AppState extends State<homeScreen> {
                           fontSize: 20,
                         ),
                       ),
-                      Icon(
-                          Icons.keyboard_arrow_down
+                      IconButton(
+                        icon: _showTodoList ? Icon(Icons.keyboard_arrow_up) : Icon(Icons.keyboard_arrow_down),
+                        onPressed: () {
+                          setState(() {
+                            _showTodoList = !_showTodoList;
+                          });
+                        },
                       ),
                     ],
                   ),
@@ -84,8 +95,13 @@ class _AppState extends State<homeScreen> {
                           fontSize: 20,
                         ),
                       ),
-                      Icon(
-                          Icons.keyboard_arrow_down
+                      IconButton(
+                        icon: _showWeeklyTodoList ? Icon(Icons.keyboard_arrow_up) : Icon(Icons.keyboard_arrow_down),
+                        onPressed: () {
+                          setState(() {
+                            _showWeeklyTodoList = !_showWeeklyTodoList;
+                          });
+                        },
                       ),
                     ],
                   ),
@@ -102,8 +118,13 @@ class _AppState extends State<homeScreen> {
                           fontSize: 20,
                         ),
                       ),
-                      Icon(
-                          Icons.keyboard_arrow_down
+                      IconButton(
+                        icon: _showMonthlyTodoList ? Icon(Icons.keyboard_arrow_up) : Icon(Icons.keyboard_arrow_down),
+                        onPressed: () {
+                          setState(() {
+                            _showMonthlyTodoList = !_showMonthlyTodoList;
+                          });
+                        },
                       ),
                     ],
                   ),
@@ -120,8 +141,13 @@ class _AppState extends State<homeScreen> {
                           fontSize: 20,
                         ),
                       ),
-                      Icon(
-                          Icons.keyboard_arrow_down
+                      IconButton(
+                        icon: _showCurrentTodoList ? Icon(Icons.keyboard_arrow_up) : Icon(Icons.keyboard_arrow_down),
+                        onPressed: () {
+                          setState(() {
+                            _showCurrentTodoList = !_showCurrentTodoList;
+                          });
+                        },
                       ),
                     ],
                   ),
